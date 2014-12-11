@@ -1,0 +1,35 @@
+data:extend
+(
+  {
+      {
+        type = "item",
+        name = "pipe-t",
+        icon = "__AlphaMod__/graphics/icons/pipe-t.png",
+        flags = {"goes-to-quickbar"},
+        subgroup = "energy-pipe-distribution",
+        order = "a[pipe]-a[pipe]",
+        place_result = "pipe-t",
+        stack_size = 50
+      },
+      {
+        type = "item",
+        name = "pipe-i",
+        icon = "__AlphaMod__/graphics/icons/pipe-i.png",
+        flags = {"goes-to-quickbar"},
+        subgroup = "energy-pipe-distribution",
+        order = "a[pipe]-a[pipe]",
+        place_result = "pipe-i",
+        stack_size = 50
+      },
+      {
+        type = "item",
+        name = "pipe-l",
+        icon = "__AlphaMod__/graphics/icons/pipe-l.png",
+        flags = {"goes-to-quickbar"},
+        subgroup = "energy-pipe-distribution",
+        order = "a[pipe]-a[pipe]",
+        place_result = "pipe-l",
+        stack_size = 50
+      }
+  }
+)
