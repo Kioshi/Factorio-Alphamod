@@ -12,9 +12,11 @@ My mod for Factorio, where i am learning how to create mods
 **Features:**
 
 * New pipes that doesnt change shape according to adjacent piping
+* New I-type pipe that have fixed input and output 
 
 **New entities:**
 
 * L pipe
 * T pipe
 * I pipe
+* I/O pipe
