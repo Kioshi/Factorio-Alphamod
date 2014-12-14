@@ -30,6 +30,26 @@ data:extend
         order = "a[pipe]-a[pipe]",
         place_result = "pipe-l",
         stack_size = 50
+      },
+      {
+        type = "item",
+        name = "pipe-io",
+        icon = "__AlphaMod__/graphics/icons/pipe-io.png",
+        flags = {"goes-to-quickbar"},
+        subgroup = "energy-pipe-distribution",
+        order = "a[pipe]-a[pipe]",
+        place_result = "pipe-io",
+        stack_size = 50
+      },
+      {
+        type = "item",
+        name = "pipe-io-inserter",
+        icon = "__AlphaMod__/graphics/icons/pipe-io.png",
+        flags = {"goes-to-quickbar"},
+        subgroup = "energy-pipe-distribution",
+        order = "a[pipe]-a[pipe]",
+        place_result = "pipe-io-inserter",
+        stack_size = 50
       }
   }
 )
