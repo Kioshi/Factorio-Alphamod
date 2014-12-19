@@ -1,9 +1,10 @@
 {
-  "name": "AlphaMod",
-  "version": "0.0.3",
-  "title": "AlphaMod",
-  "author": "Kexik",
-  "contact": "http://www.factorioforums.com/forum/memberlist.php?mode=viewprofile&u=4733",
-  "homepage": "https://github.com/Kioshi/Factorio-Alphamod",
-  "description": "Mod improving working with liquids"
+    "name": "AlphaMod",
+    "version": "0.0.3",
+    "title": "AlphaMod",
+    "author": "Kexik",
+    "contact": "http://www.factorioforums.com/forum/memberlist.php?mode=viewprofile&u=4733",
+    "homepage": "https://github.com/Kioshi/Factorio-Alphamod",
+    "description": "Mod improving working with liquids",
+    "dependencies": [ "base >= 0.11.5" ]
 }

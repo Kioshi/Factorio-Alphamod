@@ -1,7 +1,7 @@
 
 SmartStorageTank = {}
 
-EventHandler.Register(SmartStorageTank)  
+EventHandler.Register(SmartStorageTank) 
 
 function SmartStorageTank.InsertIntoGlobalTable(tank, chest)
 
@@ -120,7 +120,11 @@ function SmartStorageTank.GetLiquidInfo(tank)
             if (entity.fluidbox[1] ~= nil) then
                 amount = amount + entity.fluidbox[1].amount
                 tempXamount = tempXamount + (entity.fluidbox[1].amount * entity.fluidbox[1].temperature)
-                maxStorageSize = maxStorageSize + 250
+                local base_area = 250
+                if (game.itemprototypes["AM-fluidbox-storage-tank"] ~= nil) then
+                    base_area = game.itemprototypes["AM-fluidbox-storage-tank"].fuelvalue
+                end
+                maxStorageSize = maxStorageSize + base_area
             end
         end        
     end

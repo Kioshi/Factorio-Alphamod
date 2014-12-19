@@ -31,7 +31,20 @@ data:extend
         place_result = "smart-storage-tank-chest",
         stack_size = 50
       },    
-
+      
+      {
+        type = "item-group",
+        name = "alphamod-invisible",
+        order = "z",
+        inventory_order = "z",
+        icon = "__base__/graphics/icons/deconstruction-planner.png",
+      },
+      {
+        type = "item-subgroup",
+        name = "alphamod-metaitems",
+        group = "alphamod-invisible",
+        order = "1"
+      },
       {
         type = "item-subgroup",
         name = "logic-units",
@@ -64,70 +77,6 @@ data:extend
         subgroup = "logic-units",
         order = "c[liquid-info]",
         stack_size = 100
-      },
-      
-      {
-        type = "item",
-        name = "water",
-        icon = "__base__/graphics/icons/fluid/water.png",
-        flags = {"goes-to-main-inventory"},
-        subgroup = "logic-units",
-        order = "d[liquid-item]",
-        stack_size = 1
-      },
-      {
-        type = "item",
-        name = "crude-oil",
-        icon = "__base__/graphics/icons/fluid/crude-oil.png",
-        flags = {"goes-to-main-inventory"},
-        subgroup = "logic-units",
-        order = "d[liquid-item]",
-        stack_size = 1
-      },
-      {
-        type = "item",
-        name = "heavy-oil",
-        icon = "__base__/graphics/icons/fluid/heavy-oil.png",
-        flags = {"goes-to-main-inventory"},
-        subgroup = "logic-units",
-        order = "d[liquid-item]",
-        stack_size = 1
-      },
-      {
-        type = "item",
-        name = "light-oil",
-        icon = "__base__/graphics/icons/fluid/light-oil.png",
-        flags = {"goes-to-main-inventory"},
-        subgroup = "logic-units",
-        order = "d[liquid-item]",
-        stack_size = 1
-      },
-      {
-        type = "item",
-        name = "lubricant",
-        icon = "__base__/graphics/icons/fluid/lubricant.png",
-        flags = {"goes-to-main-inventory"},
-        subgroup = "logic-units",
-        order = "d[liquid-item]",
-        stack_size = 1
-      },
-      {
-        type = "item",
-        name = "sulfuric-acid",
-        icon = "__base__/graphics/icons/fluid/sulfuric-acid.png",
-        flags = {"goes-to-main-inventory"},
-        subgroup = "logic-units",
-        order = "d[liquid-item]",
-        stack_size = 1
-      },
-      {
-        type = "item",
-        name = "petroleum-gas",
-        icon = "__base__/graphics/icons/fluid/petroleum-gas.png",
-        flags = {"goes-to-main-inventory"},
-        subgroup = "logic-units",
-        order = "d[liquid-item]",
-        stack_size = 1
-      },
+      },      
   }
 )
