@@ -1,6 +1,9 @@
-require "defines"   
 
-function InsertIntoGlobalTable(tank, chest)
+SmartStorageTank = {}
+
+EventHandler.Register(SmartStorageTank)  
+
+function SmartStorageTank.InsertIntoGlobalTable(tank, chest)
 
     if (glob.AlphaMod == nil) then
         glob.AlphaMod = {}
@@ -17,77 +20,78 @@ function InsertIntoGlobalTable(tank, chest)
     table.insert(glob.AlphaMod.smartTanks, array)
 end
 
-function RemoveFromGlobalTable(index)
+function SmartStorageTank.RemoveFromGlobalTable(index)
     if (glob.AlphaMod ~= nil) and (glob.AlphaMod.smartTanks ~= nil) then
         table.remove(glob.AlphaMod.smartTanks, index)
     end
 end
 
-function CreateChest(tank)
+function SmartStorageTank.CreateChest(tank)
 	local chest = game.createentity{name = "smart-storage-tank-chest", position = tank.position, direction = tank.direction}
 
     chest.minable = false
 	chest.destructible = false
     chest.operable = false
 	    
-    InsertIntoGlobalTable(tank,chest)
+    SmartStorageTank.InsertIntoGlobalTable(tank,chest)
 
 end
 
-function DestroyChest(chest, index)
-    RemoveFromGlobalTable(index)
+function SmartStorageTank.DestroyChest(chest, index)
+    SmartStorageTank.RemoveFromGlobalTable(index)
 	chest.destroy()
 end
 
 
 -- Entity Build
-function OnEntityBuild(event)
+function SmartStorageTank.OnEntityBuild(event)
     if (event ~= nil) and (event.createdentity ~= nil) and (event.createdentity.name == "smart-storage-tank") then
-        CreateChest(event.createdentity)
+        SmartStorageTank.CreateChest(event.createdentity)
 	end
 end
 
 -- Entity Mined
-function OnEntityMined(event)
+function SmartStorageTank.OnEntityMined(event)
     if (event == nil) or (event.entity == nil) or (event.entity.name ~= "smart-storage-tank") or (glob.AlphaMod == nil) or (glob.AlphaMod.smartTanks == nil) then
         return;
     end
     
 	for index,array in pairs(glob.AlphaMod.smartTanks) do
         if (array ~= nil) and (array["tank"] ~= nil) and (array["chest"] ~= nil) and (event.entity.equals(array["tank"])) then
-            DestroyChest(array["chest"],index)
+            SmartStorageTank.DestroyChest(array["chest"],index)
 		end
 	end
 end
 
 -- Entity Died
-function OnEntityDied(event)
+function SmartStorageTank.OnEntityDied(event)
     if (event == nil) or (event.entity == nil) or (event.entity.name ~= "smart-storage-tank") or (glob.AlphaMod == nil) or (glob.AlphaMod.smartTanks == nil) then
         return;
     end
     
 	for index,array in pairs(glob.AlphaMod.smartTanks) do
         if (array ~= nil) and (array["tank"] ~= nil) and (array["chest"] ~= nil) and (event.entity.equals(array["tank"])) then
-            DestroyChest(array["chest"],index)
+            SmartStorageTank.DestroyChest(array["chest"],index)
 		end
 	end
 end
 
-function OnTick()
+function SmartStorageTank.OnTick()
     if (glob.AlphaMod == nil) or (glob.AlphaMod.smartTanks == nil) then
         return
     end
     
 	for index,array in pairs(glob.AlphaMod.smartTanks) do
         if (array ~= nil) and (array["tank"] ~= nil) and (array["chest"] ~= nil) then
-            local liquidInfo = GetLiquidInfo(array["tank"])
-            UpdateChestInfo(array["chest"],liquidInfo)
+            local tank = array["tank"]
+            local liquidInfo = SmartStorageTank.GetLiquidInfo(array["tank"])
+            SmartStorageTank.UpdateChestInfo(array["chest"],liquidInfo)
         end
     end
 end
 
 
-function GetLiquidInfo(tank)    
+function SmartStorageTank.GetLiquidInfo(tank)    
     local array = { }
     local liquid = tank.fluidbox[1]
     local amount = 0
@@ -138,7 +142,7 @@ function GetLiquidInfo(tank)
 end
 
 
-function UpdateChestInfo(chest,liquidInfo)
+function SmartStorageTank.UpdateChestInfo(chest,liquidInfo)
     local inventory = chest.getinventory(1)
     for key,value in pairs(inventory.getcontents()) do
         if liquidInfo[key] == nil then
@@ -158,18 +162,3 @@ function UpdateChestInfo(chest,liquidInfo)
         inventory.insert{name = key, count = 1}
     end    
 end
-
-
--- Entity Build
-game.onevent(defines.events.onbuiltentity, OnEntityBuild)       --By player
-game.onevent(defines.events.onrobotbuiltentity, OnEntityBuild)  -- By robots
-
--- Entity Mined
-game.onevent(defines.events.onpreplayermineditem, OnEntityMined) -- By player
-game.onevent(defines.events.onrobotpremined, OnEntityMined)      -- By robots
-
--- Entity Died
-game.onevent(defines.events.onentitydied, OnEntityDied)
-
---Tick
-game.onevent(defines.events.ontick, OnTick)

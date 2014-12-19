@@ -1,4 +1,3 @@
-
 function Empty()
 	return 
     {
@@ -266,8 +265,7 @@ data:extend
                 type = "fire",
                 percent = 90
                 }
-            },
-            fast_replaceable_group = "pipe",
+            },                        
             collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
             --selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
             fluid_box =
@@ -333,82 +331,81 @@ data:extend
             },
         },
         {
-		type = "inserter",
-		name = "pipe-io-inserter",
-		icon = "__AlphaMod__/graphics/icons/pipe-io.png",
-		flags = {"placeable-neutral", "placeable-player", "player-creation"},
-		minable = {hardness = 0.2, mining_time = 0.5, result = "pipe-io-inserter"},
-		max_health = 40,
-		corpse = "small-remnants",
-        resistances = 
-        {
-          {
-            type = "fire",
-            percent = 90
-          }
-        },
-		collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
-		selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-		energy_per_movement = 0,
-		energy_per_rotation = 0,
+		    type = "inserter",
+		    name = "pipe-io-inserter",
+		    icon = "__AlphaMod__/graphics/icons/pipe-io.png",
+		    flags = {"placeable-neutral", "placeable-player", "player-creation"},
+		    minable = {hardness = 0.2, mining_time = 0.5, result = "pipe-io-inserter"},
+		    max_health = 40,
+		    corpse = "small-remnants",
+            resistances = 
+            {
+              {
+                type = "fire",
+                percent = 90
+              }
+            },                 
+		    collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
+		    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+		    energy_per_movement = 0,
+		    energy_per_rotation = 0,
         
-        energy_source =
-        {
-          type = "burner",
-          effectivity = 100,
-          fuel_inventory_size = 0,
-        },
+            energy_source =
+            {
+              type = "burner",
+              effectivity = 100,
+              fuel_inventory_size = 0,
+            },
 
-        extension_speed = 0.02,
-        fast_replaceable_group = "inserter",
-        working_sound =
-        {
-          match_progress_to_activity = true,
-          sound =
-          {
+            extension_speed = 0.02,
+            working_sound =
             {
-              filename = "__base__/sound/inserter-basic-1.ogg",
-              volume = 0.75
+              match_progress_to_activity = true,
+              sound =
+              {
+                {
+                  filename = "__base__/sound/inserter-basic-1.ogg",
+                  volume = 0.75
+                },
+                {
+                  filename = "__base__/sound/inserter-basic-2.ogg",
+                  volume = 0.75
+                },
+                {
+                  filename = "__base__/sound/inserter-basic-3.ogg",
+                  volume = 0.75
+                },
+                {
+                  filename = "__base__/sound/inserter-basic-4.ogg",
+                  volume = 0.75
+                },
+                {
+                  filename = "__base__/sound/inserter-basic-5.ogg",
+                  volume = 0.75
+                }
+              }
             },
-            {
-              filename = "__base__/sound/inserter-basic-2.ogg",
-              volume = 0.75
-            },
-            {
-              filename = "__base__/sound/inserter-basic-3.ogg",
-              volume = 0.75
-            },
-            {
-              filename = "__base__/sound/inserter-basic-4.ogg",
-              volume = 0.75
-            },
-            {
-              filename = "__base__/sound/inserter-basic-5.ogg",
-              volume = 0.75
-            }
-          }
-        },
         
-		hand_base_picture = Empty(),
-		hand_closed_picture = Empty(),
-		hand_open_picture = Empty(),
-		hand_base_shadow = Empty(),
-		hand_closed_shadow = Empty(),
-		hand_open_shadow = Empty(),
+		    hand_base_picture = Empty(),
+		    hand_closed_picture = Empty(),
+		    hand_open_picture = Empty(),
+		    hand_base_shadow = Empty(),
+		    hand_closed_shadow = Empty(),
+		    hand_open_shadow = Empty(),
         
-        pickup_position = {0, 1},
-        insert_position = {0, -1},
-        platform_picture =
-        {
-          sheet =
-          {
-            filename = "__AlphaMod__/graphics/entity/pipe/pipe-sheet.png",
-            priority = "extra-high",
-            width = 58,
-            height = 58
-          }
-        },
-        rotation_speed = 0.01,
-      },
+            pickup_position = {0, 1},
+            insert_position = {0, -1},
+            platform_picture =
+            {
+              sheet =
+              {
+                filename = "__AlphaMod__/graphics/entity/pipe/pipe-sheet.png",
+                priority = "extra-high",
+                width = 58,
+                height = 58
+              }
+            },
+            rotation_speed = 0.01,
+          },
     }
 )
