@@ -1,0 +1,13 @@
+# Ignore everything
+*
+
+# ...even if they are in subdirectories
+# !*/
+
+# Dont ignore README and .gitignore
+!.gitignore
+!README.md
+
+# Dont ingore my mod dir and everything inside
+!/AlphaMod_0.0.3
+!/AlphaMod_0.0.3/*
