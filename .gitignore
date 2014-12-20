@@ -9,9 +9,9 @@
 !README.md
 
 # Dont ingore my mod dir and everything inside
-!/AlphaMod_0.0.3
-!/AlphaMod_0.0.3/*
-!/AlphaMod_0.0.3/*/*
-!/AlphaMod_0.0.3/*/*/*
-!/AlphaMod_0.0.3/*/*/*/*
-!/AlphaMod_0.0.3/*/*/*/*/*
+!/AlphaMod_[0-9].[0-9].[0-9]
+!/AlphaMod_[0-9].[0-9].[0-9]/*
+!/AlphaMod_[0-9].[0-9].[0-9]/*/*
+!/AlphaMod_[0-9].[0-9].[0-9]/*/*/*
+!/AlphaMod_[0-9].[0-9].[0-9]/*/*/*/*
+!/AlphaMod_[0-9].[0-9].[0-9]/*/*/*/*/*
