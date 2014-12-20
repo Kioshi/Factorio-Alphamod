@@ -11,3 +11,7 @@
 # Dont ingore my mod dir and everything inside
 !/AlphaMod_0.0.3
 !/AlphaMod_0.0.3/*
+!/AlphaMod_0.0.3/*/*
+!/AlphaMod_0.0.3/*/*/*
+!/AlphaMod_0.0.3/*/*/*/*
+!/AlphaMod_0.0.3/*/*/*/*/*
