@@ -23,6 +23,7 @@ for k,prototype in pairs(data.raw["fluid"]) do
             icon = prototype.icon,
             flags = {"goes-to-main-inventory"},
             subgroup = "logic-units",
+            fuel_value = prototype.max_temperature .. "J",
             order = "d[liquid-item]",
             stack_size = 1
         },

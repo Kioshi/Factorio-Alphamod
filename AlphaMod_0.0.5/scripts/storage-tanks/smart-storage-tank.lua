@@ -121,8 +121,8 @@ function SmartStorageTank.GetLiquidInfo(tank)
                 amount = amount + entity.fluidbox[1].amount
                 tempXamount = tempXamount + (entity.fluidbox[1].amount * entity.fluidbox[1].temperature)
                 local base_area = 250
-                if (game.itemprototypes["AM-fluidbox-storage-tank"] ~= nil) then
-                    base_area = game.itemprototypes["AM-fluidbox-storage-tank"].fuelvalue
+                if (game.itemprototypes["AM-fluidbox-" .. entity.name] ~= nil) then
+                    base_area = game.itemprototypes["AM-fluidbox-" .. entity.name].fuelvalue
                 end
                 maxStorageSize = maxStorageSize + base_area
             end
