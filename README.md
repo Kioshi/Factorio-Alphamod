@@ -5,7 +5,7 @@ My mod for Factorio, where i am learning how to create mods
                
 **Factorio forum topic:** http://www.factorioforums.com/forum/viewtopic.php?f=14&t=7260
 
-**Version:** 0.0.5
+**Version:** 0.0.6
 
 **Compatible with:** 0.11.7 (mod is under development on newest experimental builds)
 
@@ -19,6 +19,7 @@ My mod for Factorio, where i am learning how to create mods
 * Added Smart Pump, that pumping only when conditions and filter (if any) are fulfilled
 * Added Open Pipe, liquid disposal that generate 2 pollution per liter when liquid isnt water
 * Added Open Pito into Water, liquid disposal that generate 1 pollution per liter when liquid isnt water
+* Added Electric Boiler that will not allow perpetum mobile or slow down liquid
 
 **New entities:**
 
@@ -31,3 +32,4 @@ My mod for Factorio, where i am learning how to create mods
 * Smart Pump
 * Open pipe
 * Open pipe into water
+* Electric Boiler
