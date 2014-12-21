@@ -16,7 +16,7 @@ My mod for Factorio, where i am learning how to create mods
 * Added posibility to "fast-replace" storage tanks without loosing content
 * New Output Storage Tank, that let you pump out liquid and remove him 
 * New Smart Storage Tank, that measuring Amount Tempereture and Percent of fill of him self and directly connected tanks and let u use it for logic circuit
-* Added Smart Pump, that pumping only if conditions and filter (if any) are fulfilled
+* Added Smart Pump, that pumping only when conditions and filter (if any) are fulfilled
 
 **New entities:**
 

@@ -49,6 +49,17 @@ EventHandler = {
     end,
 
     Tick = function ()
+        
+        for index, class in pairs(EventHandler.classField) do
+            if (class.OnTickUnFiltered ~= nil) then
+                class.OnTickUnFiltered()
+            end
+        end
+
+        if (game.tick % 6 ~= 0) then -- lets call it only 10times per sec
+            return
+        end
+
         for index, class in pairs(EventHandler.classField) do
             if (class.OnTick ~= nil) then
                 class.OnTick()

@@ -44,7 +44,7 @@ end
 
 function SmartPump.RemoveEntity(event)
     if (event == nil) or (event.entity == nil) or (event.entity.name ~= "smart-pump-inserter") or (glob.AlphaMod == nil) or (glob.AlphaMod.smartPumps == nil) then
-        return;
+        return
     end
     
 	for index,array in pairs(glob.AlphaMod.smartPumps) do
