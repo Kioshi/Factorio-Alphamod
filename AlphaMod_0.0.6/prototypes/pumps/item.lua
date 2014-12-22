@@ -7,7 +7,7 @@ data:extend
         icon = "__AlphaMod__/graphics/icons/smart-pump.png",
         flags = {"goes-to-quickbar"},
         subgroup = "energy-pipe-distribution",
-        order = "c[small-pump]-c[smart-small-pump]",
+        order = "c[small-pump]-d[smart-pump]",
         place_result = "smart-pump-inserter",
         stack_size = 50
       },
@@ -17,7 +17,7 @@ data:extend
         icon = "__AlphaMod__/graphics/icons/smart-pump.png",
         flags = {"goes-to-quickbar"},
         subgroup = "energy-pipe-distribution",
-        order = "c[small-pump]-c[smart-small-pump]",
+        order = "c[small-pump]-d[smart-pump]",
         place_result = "smart-pump",
         stack_size = 50
       },

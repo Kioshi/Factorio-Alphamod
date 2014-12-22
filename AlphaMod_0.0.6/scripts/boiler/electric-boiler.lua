@@ -70,3 +70,23 @@ function ElectricBoiler.OnTickUnFiltered()
         end
     end
 end
+
+function ElectricBoiler.OnTick()
+    if (game.tick % 60 ~= 0) then
+        return
+    end
+
+    for index, player in pairs(game.players) do
+        local inv1 = player.getinventory(defines.inventory.playerquickbar)
+        local inv2 = player.getinventory(defines.inventory.playermain)
+        
+        if (inv1 ~= nil) then
+            if (inv1.getitemcount("heat-source") > 0) then inv1.remove({ name = "heat-source", count = inv1.getitemcount("heat-source")}) end
+            if (inv1.getitemcount("heat-unit") > 0) then inv1.remove({ name = "heat-unit", count = inv1.getitemcount("heat-unit")}) end
+        end
+        if (inv2 ~= nil) then
+            if (inv2.getitemcount("heat-source") > 0) then inv2.remove({ name = "heat-source", count = inv2.getitemcount("heat-source")}) end
+            if (inv2.getitemcount("heat-unit") > 0) then inv2.remove({ name = "heat-unit", count = inv2.getitemcount("heat-unit")}) end
+        end
+    end
+end

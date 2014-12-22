@@ -17,7 +17,7 @@ data:extend
         name = "heat-source",
         icon = "__AlphaMod__/graphics/icons/heat-source.png",
         flags = {"goes-to-main-inventory"},
-        subgroup = "logic-units",
+        subgroup = "alphamod-metaitems",
         order = "z[electric-boiler]",
         stack_size = 100
      },
@@ -27,7 +27,7 @@ data:extend
 		category = "alphamod-electric-boiler",
         icon = "__AlphaMod__/graphics/icons/heat-unit.png",
         flags = {"goes-to-main-inventory"},
-        subgroup = "logic-units",
+        subgroup = "alphamod-metaitems",
         order = "z[electric-boiler]",
         stack_size = 100
      },
