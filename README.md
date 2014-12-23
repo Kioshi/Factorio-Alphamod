@@ -5,9 +5,9 @@ My mod for Factorio, where i am learning how to create mods
                
 **Factorio forum topic:** http://www.factorioforums.com/forum/viewtopic.php?f=14&t=7260
 
-**Version:** 0.0.6
+**Version:** 0.0.7
 
-**Compatible with:** 0.11.7 (mod is under development on newest experimental builds)
+**Compatible with:** 0.11.8 (mod is under development on newest experimental builds, started on 0.11.4)
 
 **Features:**
 
@@ -20,6 +20,7 @@ My mod for Factorio, where i am learning how to create mods
 * Added Open Pipe, liquid disposal that generate 2 pollution per liter when liquid isnt water
 * Added Open Pito into Water, liquid disposal that generate 1 pollution per liter when liquid isnt water
 * Added Electric Boiler that will not allow perpetum mobile or slow down liquid
+* Added Liquid Splitter. For open GUI and change values hold mouse over Liquid Splitter for 1.5 sec
 
 **New entities:**
 
@@ -33,3 +34,4 @@ My mod for Factorio, where i am learning how to create mods
 * Open pipe
 * Open pipe into water
 * Electric Boiler
+* Liquid Splitter
