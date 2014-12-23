@@ -36,7 +36,7 @@ data:extend
         name = "pipe-io",
         icon = "__base__/graphics/icons/deconstruction-planner.png",
         flags = {"goes-to-quickbar"},
-        subgroup = "energy-pipe-distribution",
+        subgroup = "alphamod-metaitems",
         order = "a[pipe]-a[pipe]",
         place_result = "pipe-io",
         stack_size = 50

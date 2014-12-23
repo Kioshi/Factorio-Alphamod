@@ -16,7 +16,7 @@ data:extend
         name = "splitter-in-pump",
         icon = "__base__/graphics/icons/deconstruction-planner.png",
         flags = {"goes-to-main-inventory"},
-        subgroup = "energy-pipe-distribution",
+        subgroup = "alphamod-metaitems",
         order = "c[liquid-splitter]-d[splitter-in-pump]",
         place_result = "splitter-in-pump",
         stack_size = 50
@@ -26,7 +26,7 @@ data:extend
         name = "splitter-out-pump",
         icon = "__base__/graphics/icons/deconstruction-planner.png",
         flags = {"goes-to-main-inventory"},
-        subgroup = "energy-pipe-distribution",
+        subgroup = "alphamod-metaitems",
         order = "c[liquid-splitter]-d[splitter-out-pump]",
         place_result = "splitter-out-pump",
         stack_size = 50
@@ -36,7 +36,7 @@ data:extend
         name = "pipe-t-splitter",
         icon = "__base__/graphics/icons/deconstruction-planner.png",
         flags = {"goes-to-main-inventory"},
-        subgroup = "energy-pipe-distribution",
+        subgroup = "alphamod-metaitems",
         order = "c[liquid-splitter]-d[splitter-in-pump]",
         place_result = "pipe-t-splitter",
         stack_size = 50
@@ -46,7 +46,7 @@ data:extend
         name = "pipe-l-splitter",
         icon = "__base__/graphics/icons/deconstruction-planner.png",
         flags = {"goes-to-main-inventory"},
-        subgroup = "energy-pipe-distribution",
+        subgroup = "alphamod-metaitems",
         order = "c[liquid-splitter]-d[splitter-in-pump]",
         place_result = "pipe-l-splitter",
         stack_size = 50

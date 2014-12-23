@@ -26,7 +26,7 @@ data:extend
         name = "smart-storage-tank-chest",
         icon = "__base__/graphics/icons/deconstruction-planner.png",
         flags = {"goes-to-quickbar"},
-        subgroup = "storage",
+        subgroup = "alphamod-metaitems",
         order = "b[fluid]-a[storage-tank]",
         place_result = "smart-storage-tank-chest",
         stack_size = 50
