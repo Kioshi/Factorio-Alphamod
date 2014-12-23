@@ -19,7 +19,7 @@ for k,prototype in pairs(data.raw["fluid"]) do
     {
         {
             type = "item",
-            name = prototype.name,
+            name = "AM-fluidItem-"..prototype.name,
             icon = prototype.icon,
             flags = {"goes-to-main-inventory"},
             subgroup = "logic-units",

@@ -3,21 +3,33 @@ SmartStorageTank = {}
 
 EventHandler.Register(SmartStorageTank) 
 
-function SmartStorageTank.InsertIntoGlobalTable(tank, chest)
-
-    if (glob.AlphaMod == nil) then
-        glob.AlphaMod = {}
-    end;
+function SmartStorageTank.LoadMetaItems()
+    local storageTanksBaseArea = {}
+    local fluidItems = {}
+    CreateGlobalTable("storageTanksBaseArea")
+    CreateGlobalTable("fluidItems")
+    for index, item in pairs(game.itemprototypes) do
+        if (string.sub(index,1,12) == "AM-fluidbox-") then    
+            glob.AlphaMod.storageTanksBaseArea[index] = item.fuelvalue
+        elseif (string.sub(index,1,13) == "AM-fluidItem-") then 
+            glob.AlphaMod.fluidItems[index] = item.fuelvalue
+        end
+    end
     
-    if (glob.AlphaMod.smartTanks == nil) then
-        glob.AlphaMod.smartTanks = { }
-    end;
+    for index, value in pairs(glob.AlphaMod.fluidItems) do
+        game.player.print(index.." "..tostring(value))
+    end
+    for index, value in pairs(glob.AlphaMod.storageTanksBaseArea) do
+        game.player.print(index.." "..tostring(value))
+    end
+end
 
-    local array = { }
-    array["tank"] = tank
-    array["chest"] = chest
+function SmartStorageTank.OnInit()
+    SmartStorageTank.LoadMetaItems()
+end
 
-    table.insert(glob.AlphaMod.smartTanks, array)
+function SmartStorageTank.OnLoad()
+    SmartStorageTank.LoadMetaItems()
 end
 
 function SmartStorageTank.RemoveFromGlobalTable(index)
@@ -33,7 +45,11 @@ function SmartStorageTank.CreateChest(tank)
 	chest.destructible = false
     chest.operable = false
 	    
-    SmartStorageTank.InsertIntoGlobalTable(tank,chest)
+    local array = { }
+    array["tank"] = tank
+    array["chest"] = chest
+
+    InsertIntoGlobalTable("smartTanks",array)
 
 end
 
@@ -93,52 +109,35 @@ end
 
 function SmartStorageTank.GetLiquidInfo(tank)    
     local array = { }
-    local liquid = tank.fluidbox[1]
     local amount = 0
     local tempXamount = 0
     local maxStorageSize = 0
     local validTanks = {}
-    function GetNeiboroughTankTable (tank)
-        for index, entity in pairs(tank.neighbours) do
-            if (entity ~= nil) and (entity.type == "storage-tank") and (validTanks[entity] ~= true) then
-                validTanks[entity] = true
-                --GetNeiboroughTankTable(entity) -- TODO do this without stackoverflow shit
-            end
-        end
-    end
 
-    if (liquid == nil) then
+    if (tank.fluidbox[1] == nil) then
         return array
     end
     
     validTanks[tank] = true
-    GetNeiboroughTankTable(tank)
     
     for entity, b in pairs(validTanks) do
-        if (entity ~= nil) then
-            if (entity.fluidbox[1] ~= nil) then
-                amount = amount + entity.fluidbox[1].amount
-                tempXamount = tempXamount + (entity.fluidbox[1].amount * entity.fluidbox[1].temperature)
-                local base_area = 250
-                if (game.itemprototypes["AM-fluidbox-" .. entity.name] ~= nil) then
-                    base_area = game.itemprototypes["AM-fluidbox-" .. entity.name].fuelvalue
-                end
-                maxStorageSize = maxStorageSize + base_area
-            end
-        end        
+        if (entity ~= nil) and (entity.fluidbox[1] ~= nil) then
+            amount = amount + entity.fluidbox[1].amount
+            tempXamount = tempXamount + (entity.fluidbox[1].amount * entity.fluidbox[1].temperature)
+            local base_area = inlineIf(glob.AlphaMod.storageTanksBaseArea["AM-fluidbox-" .. entity.name] ~= nil, glob.AlphaMod.storageTanksBaseArea["AM-fluidbox-" .. entity.name], 25)
+            maxStorageSize = maxStorageSize + base_area
+        end     
     end
-
+    
     if (maxStorageSize == 0) then
         return array
     end
 
-    if (game.itemprototypes ~= nil) and (game.itemprototypes[liquid.type] ~= nil) then   
-        array[liquid.type] = 1
+    if (glob.AlphaMod.fluidItems["AM-fluidItem-" .. tank.fluidbox[1].type]) then   
+        array["AM-fluidItem-" .. tank.fluidbox[1].type] = 1
     end
     array["liquid-amount"] = amount
-    if (amount ~= 0) then
-        array["liquid-temperature"] = tempXamount / amount
-    end
+    array["liquid-temperature"] = tempXamount / math.max(0.1,amount)
     array["liquid-percentual"] = (amount+0.5) / (maxStorageSize*10) * 100
     
     return array

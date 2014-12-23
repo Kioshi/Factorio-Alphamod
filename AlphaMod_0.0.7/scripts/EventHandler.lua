@@ -78,6 +78,30 @@ EventHandler = {
         end
     end,
 
+    Init = function()    
+        for index, class in pairs(EventHandler.classField) do
+            if (class.OnInit ~= nil) then
+                class.OnInit()
+            end
+        end
+    end,
+
+    Load = function()    
+        for index, class in pairs(EventHandler.classField) do
+            if (class.OnLoad ~= nil) then
+                class.OnLoad()
+            end
+        end
+    end,
+
+    Save = function()    
+        for index, class in pairs(EventHandler.classField) do
+            if (class.OnSave ~= nil) then
+                class.OnSave()
+            end
+        end
+    end,
+
     RemoveEntityFromPlayersSelection = function(entity)
         for index, player in pairs(game.players) do
             if (glob.AlphaMod.playersSelection[index]) and (entity.equals(glob.AlphaMod.playersSelection[index].entity)) then
@@ -144,4 +168,13 @@ game.onevent(defines.events.onputitem, EventHandler.PutOnPos)
 
 --Someone clicked GUI
 game.onevent(defines.events.onguiclick, EventHandler.GuiClick)
+
+-- Started New Game
+game.oninit(EventHandler.Init)
+
+-- Loaded Game
+game.onload(EventHandler.Load)
+
+-- Saved Game
+game.onsave(EventHandler.Save)
 
