@@ -98,7 +98,6 @@ function SmartStorageTank.GetLiquidInfo(tank)
     local tempXamount = 0
     local maxStorageSize = 0
     local validTanks = {}
-    local GetNeiboroughTankTable
     function GetNeiboroughTankTable (tank)
         for index, entity in pairs(tank.neighbours) do
             if (entity ~= nil) and (entity.type == "storage-tank") and (validTanks[entity] ~= true) then

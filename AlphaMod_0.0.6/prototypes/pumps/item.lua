@@ -14,7 +14,7 @@ data:extend
       {
         type = "item",
         name = "smart-pump",
-        icon = "__AlphaMod__/graphics/icons/smart-pump.png",
+        icon = "__base__/graphics/icons/deconstruction-planner.png",
         flags = {"goes-to-quickbar"},
         subgroup = "energy-pipe-distribution",
         order = "c[small-pump]-d[smart-pump]",

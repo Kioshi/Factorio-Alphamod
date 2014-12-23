@@ -24,7 +24,7 @@ data:extend
       {
         type = "item",
         name = "smart-storage-tank-chest",
-        icon = "__AlphaMod__/graphics/icons/smart-storage-tank.png",
+        icon = "__base__/graphics/icons/deconstruction-planner.png",
         flags = {"goes-to-quickbar"},
         subgroup = "storage",
         order = "b[fluid]-a[storage-tank]",

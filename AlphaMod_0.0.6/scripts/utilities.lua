@@ -9,9 +9,26 @@ function fncIN(ref, ...)
 end 
 
 function inlineIf(condition, True, False)
-    if (condtion) then 
+    if (condition == true) then 
         return True 
     else 
         return False
     end
 end
+
+function InsertIntoGlobalTable(tableName,value)
+    CreateGlobalTable(tableName)
+    table.insert(glob.AlphaMod[tableName], value)
+end
+
+
+function CreateGlobalTable(tableName)
+    if (glob.AlphaMod == nil) then
+        glob.AlphaMod = {}
+    end;
+    
+    if (glob.AlphaMod[tableName] == nil) then
+        glob.AlphaMod[tableName] = {}
+    end;
+end
+

@@ -34,7 +34,7 @@ data:extend
       {
         type = "item",
         name = "pipe-io",
-        icon = "__AlphaMod__/graphics/icons/pipe-io.png",
+        icon = "__base__/graphics/icons/deconstruction-planner.png",
         flags = {"goes-to-quickbar"},
         subgroup = "energy-pipe-distribution",
         order = "a[pipe]-a[pipe]",
