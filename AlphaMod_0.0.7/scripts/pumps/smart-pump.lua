@@ -100,7 +100,7 @@ function SmartPump.FilterConditonFulfilled(filter, pump)
     local condition = false
 
     if (pump.neighbours ~= nil) and (pump.neighbours[2] ~= nil) and (pump.neighbours[2].fluidbox[1] ~= nil) then
-        condition = (pump.neighbours[2].fluidbox[1].type == filter)
+        condition = (("AM-fluidItem-"..pump.neighbours[2].fluidbox[1].type) == filter)
     end
 
     return condition

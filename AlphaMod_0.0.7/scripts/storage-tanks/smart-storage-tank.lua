@@ -15,13 +15,6 @@ function SmartStorageTank.LoadMetaItems()
             glob.AlphaMod.fluidItems[index] = item.fuelvalue
         end
     end
-    
-    for index, value in pairs(glob.AlphaMod.fluidItems) do
-        game.player.print(index.." "..tostring(value))
-    end
-    for index, value in pairs(glob.AlphaMod.storageTanksBaseArea) do
-        game.player.print(index.." "..tostring(value))
-    end
 end
 
 function SmartStorageTank.OnInit()

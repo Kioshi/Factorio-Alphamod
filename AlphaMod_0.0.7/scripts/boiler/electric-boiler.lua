@@ -50,20 +50,20 @@ function ElectricBoiler.OnTickUnFiltered()
     end
 
     for index, entity in pairs(glob.AlphaMod.electricBoilers) do
-        if (entity ~= nil) and (entity.fluidbox[1] ~= nil) and (entity.fluidbox[1].amount > 0) and (entity.recipe ~= nil) and (game.itemprototypes[entity.fluidbox[1].type] ~= nil) then       
+        if (entity ~= nil) and (entity.fluidbox[1] ~= nil) and (entity.fluidbox[1].amount > 0) and (entity.recipe ~= nil) and (glob.AlphaMod.fluidItems["AM-fluidItem-" .. entity.fluidbox[1].type]) then       
             local outPut = entity.getoutputinventory()
             local inPut = entity.getinventory(2)
             local fluidBox = entity.fluidbox[1]
-            local metaItem = game.itemprototypes[fluidBox.type]
+            local maxTemperature = glob.AlphaMod.fluidItems["AM-fluidItem-" .. entity.fluidbox[1].type]
             
-            if (fluidBox.temperature < metaItem.fuelvalue) then
+            if (fluidBox.temperature < maxTemperature) then
                 if (inPut.getitemcount("heat-source") < 1) then
                     inPut.insert({name="heat-source", count = 1})
                 end
             
                 if (outPut.getitemcount("heat-unit") > 0) then
                     outPut.remove({name="heat-unit", count = outPut.getitemcount("heat-unit")})
-                    fluidBox.temperature = math.min(metaItem.fuelvalue, fluidBox.temperature + 9)
+                    fluidBox.temperature = math.min(maxTemperature, fluidBox.temperature + 9)
                     entity.fluidbox[1] = fluidBox
                 end
             end
