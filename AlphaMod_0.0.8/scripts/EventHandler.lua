@@ -116,32 +116,30 @@ EventHandler = {
         end
 
         for index, player in pairs(game.players) do
-            if (glob.AlphaMod.playersSelection[index] == nil) then
-                glob.AlphaMod.playersSelection[index] = { entity = nil, tick = game.tick, announced = false }
-            end
-            if (glob.AlphaMod.playersSelection[index].entity ~= nil) and (glob.AlphaMod.playersSelection[index].entity.valid ~= true) then
-                glob.AlphaMod.playersSelection[index].entity = nil
-            end
-            if ((glob.AlphaMod.playersSelection[index].entity == nil) and (player.selected ~= nil)) or --player didnt have selected anything and selected something
-               ((glob.AlphaMod.playersSelection[index].entity ~= nil) and (player.selected == nil)) or --player had selected something and deselected it
-               ((glob.AlphaMod.playersSelection[index].entity ~= nil) and (player.selected ~= nil) and (player.selected.equals(glob.AlphaMod.playersSelection[index].entity)) == false) then -- player selected something else
-                --Update global table
-                glob.AlphaMod.playersSelection[index] = { entity = player.selected, tick = game.tick, announced = false }
-            end
-
-            if (glob.AlphaMod.playersSelection[index]) and (glob.AlphaMod.playersSelection[index].entity) and 
-               (glob.AlphaMod.playersSelection[index].announced == false) and 
-               ((game.tick - glob.AlphaMod.playersSelection[index].tick) > 90) then
-                -- Call selected
-                for i, class in pairs(EventHandler.classField) do
-                    if (class.OnSelect ~= nil) then
-                        class.OnSelect(player,glob.AlphaMod.playersSelection[index].entity, index)
+            if ((glob.AlphaMod.playersSelection[index] == nil) and (player.opened ~= nil)) or 
+               ((glob.AlphaMod.playersSelection[index] ~= nil) and (player.opened == nil)) or
+               ((glob.AlphaMod.playersSelection[index] ~= nil) and (player.opened ~= nil) and player.opened.equals(glob.AlphaMod.playersSelection[index]) == false)
+            then  
+                -- player had open something and that change  
+                if (glob.AlphaMod.playersSelection[index] ~= nil) then
+                    for i, class in pairs(EventHandler.classField) do
+                        if (class.OnDeselect ~= nil) then
+                            class.OnDeselect(player, glob.AlphaMod.playersSelection[index], index)
+                        end
+                    end        
+                end
+                -- player open something
+                if (player.opened ~= nil) then
+                    for i, class in pairs(EventHandler.classField) do
+                        if (class.OnSelect ~= nil) then
+                            class.OnSelect(player, player.opened, index)
+                        end
                     end
                 end
-                glob.AlphaMod.playersSelection[index].announced = true
+                glob.AlphaMod.playersSelection[index] = player.opened
             end
         end
-    end
+    end,
 }
 
 EventHandler.__index = EventHandler

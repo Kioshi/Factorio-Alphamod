@@ -13,6 +13,16 @@ data:extend
       },
       {
         type = "item",
+        name = "liquid-splitter-inserter",
+        icon = "__AlphaMod__/graphics/icons/liquid-splitter.png",
+        flags = {"goes-to-quickbar"},
+        subgroup = "energy-pipe-distribution",
+        order = "a[smart-pump]-b[liquid-splitter]",
+        place_result = "liquid-splitter-inserter",
+        stack_size = 50
+      },
+      {
+        type = "item",
         name = "splitter-in-pump",
         icon = "__base__/graphics/icons/deconstruction-planner.png",
         flags = {"goes-to-main-inventory"},

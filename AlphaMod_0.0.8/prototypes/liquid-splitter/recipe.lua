@@ -3,7 +3,7 @@ data:extend
   {
     {
       type = "recipe",
-      name = "liquid-splitter",
+      name = "liquid-splitter-inserter",
       ingredients = 
       {
         {"small-pump", 3},
@@ -11,7 +11,7 @@ data:extend
         {"electronic-circuit", 5},
         {"steel-plate", 5}
       },
-      result = "liquid-splitter"
+      result = "liquid-splitter-inserter"
     },
 
   }

@@ -32,7 +32,7 @@ data:extend
             {
                 sheet =
                 {
-                filename = "__AlphaMod__/graphics/entity/liquid-splitter/storage-tank.png",
+                filename = "__AlphaMod__/graphics/entity/liquid-splitter/liquid-splitter.png",
                 priority = "extra-high",
                 frames = 4,
                 width = 140,
@@ -42,10 +42,55 @@ data:extend
             },
             render_layer = "floor",
         },
+         {
+            type = "inserter",
+            name = "liquid-splitter-inserter",
+            icon = "__AlphaMod__/graphics/icons/liquid-splitter.png",
+            flags = {"placeable-player", "player-creation"},
+            minable = {hardness = 0.2, mining_time = 3, result = "liquid-splitter-inserter"},
+            max_health = 500,
+            corpse = "medium-remnants",
+            collision_box = {{-1.3, -1.3}, {1.3, 1.3}},
+            selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+            
+            pickup_position = {0, 2},
+            insert_position = {0, -2},
+            energy_per_movement = 1,
+            energy_per_rotation = 1,
+            energy_source =
+            {
+              type = "electric",
+              usage_priority = "secondary-input",
+              drain = "0.1kW"
+            },
+            extension_speed = 0.07,
+            filter_count = 1,
+            
+		    hand_base_picture = Empty(),
+		    hand_closed_picture = Empty(),
+		    hand_open_picture = Empty(),
+		    hand_base_shadow = Empty(),
+		    hand_closed_shadow = Empty(),
+		    hand_open_shadow = Empty(),
+
+            platform_picture =
+            {
+                sheet=
+                {
+                    filename = "__AlphaMod__/graphics/entity/liquid-splitter/liquid-splitter.png",
+                    priority = "extra-high",
+                    width = 140,
+                    height = 115,
+                    shift = {0.6875, 0.109375}
+                }
+            },
+            rotation_speed = 0.035,
+            uses_arm_movement = "basic-inserter"
+        },
         {
             type = "pump",
             name = "splitter-in-pump",
-            icon = "__base__/graphics/icons/deconstruction-planner.png",
+            icon = "__AlphaMod__/graphics/icons/liquid-splitter.png",
             flags = {"placeable-neutral", "player-creation"},
             minable = {mining_time = 1, result = "splitter-in-pump"},
             max_health = 80,
@@ -120,7 +165,7 @@ data:extend
         {
             type = "pump",
             name = "splitter-out-pump",
-            icon = "__base__/graphics/icons/deconstruction-planner.png",
+            icon = "__AlphaMod__/graphics/icons/liquid-splitter.png",
             flags = {"placeable-neutral", "player-creation"},
             minable = {mining_time = 1, result = "splitter-out-pump"},
             max_health = 80,
@@ -217,7 +262,7 @@ data:extend
                 {
                   { position = {0, -1}, type="output" },
                   { position = {0, 1}, type="output" },
-                  { position = {1, 0}, type="output" },
+                  { position = {1, 0}, type="input" },
                 },
 
             },
@@ -294,8 +339,8 @@ data:extend
                 pipe_covers = pipecoverspictures(),
                 pipe_connections =
                 {
-                  { position = {1, 0} },
-                  { position = {0, 1} },
+                  { position = {1, 0}, type="output" },
+                  { position = {0, 1}, type="output" },
                 },
 
             },
