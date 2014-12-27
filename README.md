@@ -5,7 +5,7 @@ My mod for Factorio, where i am learning how to create mods
                
 **Factorio forum topic:** http://www.factorioforums.com/forum/viewtopic.php?f=14&t=7260
 
-**Version:** 0.0.8
+**Version:** 0.0.9
 
 **Compatible with:** 0.11.8 (mod is under development on newest experimental builds, started on 0.11.4)
 
