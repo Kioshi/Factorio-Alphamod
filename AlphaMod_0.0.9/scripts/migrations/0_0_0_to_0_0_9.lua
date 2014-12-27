@@ -20,6 +20,13 @@ function Migration_0_0_0_to_0_0_9.MigrateGlobalTableEntities()
         game.player.print("Migrating stuff from 0.0.0 to 0.0.9...") 
         game.player.print(" > Migrated " .. tostring(count) .. " Liquid Splitters") 
     end
+
+    for index, player in pairs(game.players) do
+        if (player.gui.center.AmLsGUI ~= nil) then
+            player.gui.center.AmLsGUI.destroy()
+        end
+    end
+
 end
 
 function Migration_0_0_0_to_0_0_9.OnLoad()
