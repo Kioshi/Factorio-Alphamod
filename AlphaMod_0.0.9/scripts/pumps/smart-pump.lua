@@ -2,24 +2,6 @@ SmartPump = {}
 
 EventHandler.Register(SmartPump)
 
-
-function SmartPump.InsertIntoGlobalTable(inserter, pump)
-
-    if (glob.AlphaMod == nil) then
-        glob.AlphaMod = {}
-    end;
-    
-    if (glob.AlphaMod.smartPumps == nil) then
-        glob.AlphaMod.smartPumps = { }
-    end;
-
-    local array = { }
-    array["inserter"] = inserter
-    array["pump"] = pump
-
-    table.insert(glob.AlphaMod.smartPumps, array)
-end
-
 function SmartPump.RemoveFromGlobalTable(index)
     if (glob.AlphaMod ~= nil) and (glob.AlphaMod.smartPumps ~= nil) then
         table.remove(glob.AlphaMod.smartPumps, index)
@@ -33,7 +15,10 @@ function SmartPump.CreatePump(inserter)
 	pump.destructible = false
     pump.operable = false
 	    
-    SmartPump.InsertIntoGlobalTable(inserter,pump)
+    local array = { }
+    array["inserter"] = inserter
+    array["pump"] = pump
+    InsertIntoGlobalTable("smartPumps",array)
 
 end
 

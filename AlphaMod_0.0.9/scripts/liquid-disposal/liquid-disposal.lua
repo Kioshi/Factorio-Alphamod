@@ -2,27 +2,13 @@ LiquidDisposal = {}
 
 EventHandler.Register(LiquidDisposal)
 
-function LiquidDisposal.InsertIntoGlobalTable(entity)
-
-    if (glob.AlphaMod == nil) then
-        glob.AlphaMod = {}
-    end;
-    
-    if (glob.AlphaMod.liquidDisposals == nil) then
-        glob.AlphaMod.liquidDisposals = { }
-    end;
-
-
-    table.insert(glob.AlphaMod.liquidDisposals, entity)
-end
-
 function LiquidDisposal.OnEntityBuild(event)
     if (event ~= nil) and (event.createdentity ~= nil) and (fncIN(event.createdentity.name, "pipe-to-water", "open-pipe")) then
         if (event.createdentity.name == "pipe-to-water") then
             event.createdentity.active = false
         end
 
-        LiquidDisposal.InsertIntoGlobalTable(event.createdentity)
+        InsertIntoGlobalTable("liquidDisposals",event.createdentity)
         
 	    for playerIndex,player in pairs(game.players) do
 		    if (player ~= nil) and (player.cursorstack ~= nil) then

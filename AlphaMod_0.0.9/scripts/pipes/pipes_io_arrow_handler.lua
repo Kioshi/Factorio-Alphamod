@@ -2,22 +2,6 @@ PipeArrorwHandler = {}
 
 EventHandler.Register(PipeArrorwHandler) 
 
-function PipeArrorwHandler.InsertIntoGlobalTable(pipeInserter, pipe)
-
-    if (glob.AlphaMod == nil) then
-        glob.AlphaMod = {}
-    end;
-    
-    if (glob.AlphaMod.ioPipes == nil) then
-        glob.AlphaMod.ioPipes = { }
-    end;
-
-    local array = { }
-    array["pipe"] = pipe
-    array["inserter"] = pipeInserter
-
-    table.insert(glob.AlphaMod.ioPipes, array)
-end
 
 function PipeArrorwHandler.RemoveFromGlobalTable(index)
     if (glob.AlphaMod ~= nil) and (glob.AlphaMod.ioPipes ~= nil) then
@@ -33,7 +17,10 @@ function PipeArrorwHandler.CreateActualPipe(pipeInserter)
 	pipe.destructible = false
 	pipeInserter.active = false
 	    
-    PipeArrorwHandler.InsertIntoGlobalTable(pipeInserter,pipe)
+    local array = { }
+    array["pipe"] = pipe
+    array["inserter"] = pipeInserter
+    InsertIntoGlobalTable("ioPipes",array)
 
 end
 

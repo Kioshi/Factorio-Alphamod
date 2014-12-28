@@ -2,23 +2,10 @@ ElectricBoiler = {}
 
 EventHandler.Register(ElectricBoiler)
 
-function ElectricBoiler.InsertIntoGlobalTable(entity)
-
-    if (glob.AlphaMod == nil) then
-        glob.AlphaMod = {}
-    end;
-    
-    if (glob.AlphaMod.electricBoilers == nil) then
-        glob.AlphaMod.electricBoilers = { }
-    end;
-
-
-    table.insert(glob.AlphaMod.electricBoilers, entity)
-end
 
 function ElectricBoiler.OnEntityBuild(event)
     if (event ~= nil) and (event.createdentity ~= nil) and (event.createdentity.name == "electric-boiler-pump") then
-        ElectricBoiler.InsertIntoGlobalTable(event.createdentity)
+        InsertIntoGlobalTable("electricBoilers",event.createdentity)
 	end
 end
 
