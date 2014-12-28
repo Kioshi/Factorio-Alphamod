@@ -61,7 +61,7 @@ data:extend
             {
               type = "electric",
               usage_priority = "secondary-input",
-              drain = "0.1kW"
+              drain = "0.0001kW"
             },
             extension_speed = 0.07,
             filter_count = 1,
