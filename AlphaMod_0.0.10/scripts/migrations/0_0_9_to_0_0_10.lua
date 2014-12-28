@@ -9,17 +9,17 @@ function Migration_0_0_9_to_0_0_10.MigrateGlobalTableEntities()
 
     local count = 0
 	for index,entity in pairs(glob.AlphaMod.electricBoilers) do
-        if (entity.name == "electic-boiler") then
+        if (entity.name == "electric-boiler") then
             local pos = entity.position
             local dir = entity.direction
             entity.destroy()
-            glob.AlphaMod.electricBoilers[index] = game.createentity{ name = "electic-boiler-pump", position = pos, direction = dir }
+            glob.AlphaMod.electricBoilers[index] = game.createentity{ name = "electric-boiler-pump", position = pos, direction = dir }
             count = count + 1
         end
     end
     if (count ~= 0) then
         game.player.print("Migrating stuff from 0.0.9 to 0.0.10...") 
-        game.player.print(" > Migrated " .. tostring(count) .. " Electic Boilers") 
+        game.player.print(" > Migrated " .. tostring(count) .. " Electric Boilers") 
     end
 end
 
