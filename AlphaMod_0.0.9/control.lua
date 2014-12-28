@@ -3,6 +3,7 @@ require("scripts.utilities")
 require("scripts.EventHandler")
 -- migrations
 require("scripts.migrations.0_0_0_to_0_0_9")
+require("scripts.migrations.0_0_9_to_0_0_10")
 -- scripts
 require("scripts.pipes.pipes_fast_replace")
 require("scripts.pipes.pipes_io_arrow_handler")
