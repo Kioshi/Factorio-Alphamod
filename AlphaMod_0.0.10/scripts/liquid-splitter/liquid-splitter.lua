@@ -71,7 +71,7 @@ function LiquidSplitter.RemoveEntity(entity)
     
     if (glob.AlphaMod.liquidSplitterGuiConnector ~= nil) then
         for i,e in pairs(glob.AlphaMod.liquidSplitterGuiConnector) do
-            if (entity.equals(e)) and (game.players[i].gui.left.AmLsGUI ~= nil) then
+            if ((e.valid == false) or (entity.equals(e))) and (game.players[i].gui.left.AmLsGUI ~= nil) then
                 game.players[i].gui.left.AmLsGUI.destroy()
             end
         end
