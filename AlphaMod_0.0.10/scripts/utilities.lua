@@ -8,6 +8,15 @@ function fncIN(ref, ...)
     return false
 end 
 
+function fncINtable(ref, table)
+    for i,cmpr in pairs(table) do
+        if (ref == cmpr) then
+            return true
+        end
+    end
+    return false
+end 
+
 function inlineIf(condition, True, False)
     if (condition == true) then 
         return True 
