@@ -4,6 +4,7 @@ data:extend
     {
       type = "recipe",
       name = "liquid-splitter-inserter",
+      enabled = "false",
       ingredients = 
       {
         {"small-pump", 3},
@@ -13,6 +14,5 @@ data:extend
       },
       result = "liquid-splitter-inserter"
     },
-
   }
 )

@@ -23,3 +23,5 @@ require("boiler.item")
 require("liquid-splitter.entity")
 require("liquid-splitter.recipe")
 require("liquid-splitter.item")
+
+require("technology.fluid-handling")
