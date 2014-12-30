@@ -17,7 +17,7 @@ data:extend
         icon = "__AlphaMod__/graphics/icons/electric-boiler.png",
         flags = {"goes-to-quickbar"},
         subgroup = "energy",
-        order = "a[boiler]-b[electric-boiler]",
+        order = "b[steam-power]-a[electic-boiler]",
         place_result = "electric-boiler-pump",
         stack_size = 50
       },

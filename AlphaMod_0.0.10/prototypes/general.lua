@@ -2,6 +2,12 @@ data:extend
 (
   {
       {
+        type = "item-subgroup",
+        name = "alphamod-pipes",
+        group = "logistics",
+        order = "d-a",
+      },
+      {
         type = "item-group",
         name = "alphamod-invisible",
         order = "zz",

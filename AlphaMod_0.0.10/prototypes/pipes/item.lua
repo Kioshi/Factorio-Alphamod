@@ -6,7 +6,7 @@ data:extend
         name = "pipe-t",
         icon = "__AlphaMod__/graphics/icons/pipe-t.png",
         flags = {"goes-to-quickbar"},
-        subgroup = "energy-pipe-distribution",
+        subgroup = "alphamod-pipes",
         order = "a[pipe]-a[pipe]",
         place_result = "pipe-t",
         stack_size = 50
@@ -16,7 +16,7 @@ data:extend
         name = "pipe-i",
         icon = "__AlphaMod__/graphics/icons/pipe-i.png",
         flags = {"goes-to-quickbar"},
-        subgroup = "energy-pipe-distribution",
+        subgroup = "alphamod-pipes",
         order = "a[pipe]-a[pipe]",
         place_result = "pipe-i",
         stack_size = 50
@@ -26,7 +26,7 @@ data:extend
         name = "pipe-l",
         icon = "__AlphaMod__/graphics/icons/pipe-l.png",
         flags = {"goes-to-quickbar"},
-        subgroup = "energy-pipe-distribution",
+        subgroup = "alphamod-pipes",
         order = "a[pipe]-a[pipe]",
         place_result = "pipe-l",
         stack_size = 50
@@ -46,7 +46,7 @@ data:extend
         name = "pipe-io-inserter",
         icon = "__AlphaMod__/graphics/icons/pipe-io.png",
         flags = {"goes-to-quickbar"},
-        subgroup = "energy-pipe-distribution",
+        subgroup = "alphamod-pipes",
         order = "a[pipe]-a[pipe]",
         place_result = "pipe-io-inserter",
         stack_size = 50
