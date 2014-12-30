@@ -5,7 +5,7 @@ My mod for Factorio, where i am learning how to create mods
                
 **Factorio forum topic:** http://www.factorioforums.com/forum/viewtopic.php?f=14&t=7260
 
-**Version:** 0.0.10
+**Version:** 0.1.0 - Advanced Fluid Handling
 
 **Compatible with:** 0.11.8 (mod is under development on newest experimental builds, started on 0.11.4)
 
@@ -22,6 +22,8 @@ My mod for Factorio, where i am learning how to create mods
 * Added Electric Boiler that will not allow perpetum mobile or slow down liquid
 * Added Liquid Splitter. For open GUI and change values hold mouse over Liquid Splitter for 1.5 sec
 * In 0.0.8 mod was optimalized and should not cause any major fps drops
+* Added generating fixed pipes (I,L,T), from other mod pipe prototypes 
+* Balanced recipes with requirement of Advanced Fluid Handling technology
 
 **New entities:**
 
