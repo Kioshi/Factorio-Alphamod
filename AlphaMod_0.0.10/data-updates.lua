@@ -22,7 +22,7 @@ for k,prototype in pairs(data.raw["fluid"]) do
             name = "AM-fluidItem-"..prototype.name,
             icon = prototype.icon,
             flags = {"goes-to-main-inventory"},
-            subgroup = "logic-units",
+            subgroup = "alphamod-generated-fluid",
             fuel_value = prototype.max_temperature .. "J",
             order = "d[liquid-item]",
             stack_size = 1
@@ -74,8 +74,8 @@ function FixedPipeItemPrototype(prototype, type)
         name = prototype.name .. type,
         icon = prototype.icon,
         flags = {"goes-to-quickbar"},
-        subgroup = "energy-pipe-distribution",
-        order = "a[pipe]-a[pipe]",
+        subgroup = "alphamod-generated-pipes",
+        order = "a["..prototype.name.."]-a["..prototype.name.."]",
         place_result = prototype.name .. type,
         stack_size = 50
     }
