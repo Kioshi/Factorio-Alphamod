@@ -18,10 +18,10 @@ function FastReplacePipes.OnEntityBuild(event)
 end
 
 function FastReplacePipes.LoadFixedPipes()
+    CreateGlobalTable("FixedPipes")
     for index, item in pairs(game.itemprototypes) do
         if (string.match(index, '-[ilt]$') ~= nil) then
-            InsertIntoGlobalTable("FixedPipes", index)
-            game.player.print(index)
+            glob.AlphaMod.FixedPipes[index] = index
         end
     end
 end
