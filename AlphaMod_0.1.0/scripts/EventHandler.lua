@@ -67,6 +67,7 @@ EventHandler = {
         end
 
         EventHandler.SelectionHandler()
+        EventHandler.SelfOpenHandler()
         
     end,
 
@@ -139,6 +140,39 @@ EventHandler = {
                 glob.AlphaMod.playersSelection[index] = player.opened
             end
         end
+    end,
+
+    SelfOpenHandler = function()
+        if (glob.AlphaMod == nil) or (glob.AlphaMod.playerSelfOpen == nil) then
+            CreateGlobalTable("playerSelfOpen")
+        end
+
+        for index, player in pairs(game.players) do
+            if (glob.AlphaMod.playerSelfOpen[index] == nil) then
+                glob.AlphaMod.playerSelfOpen[index] = false
+            end
+
+            if (glob.AlphaMod.playerSelfOpen[index] ~= player.openedself) then  
+                -- player closed his menu
+                if (glob.AlphaMod.playerSelfOpen[index] == true) then
+                    for i, class in pairs(EventHandler.classField) do
+                        if (class.OnSelfClose ~= nil) then
+                            class.OnSelfClose(player, index)
+                        end
+                    end        
+                end
+                -- player open something
+                if (player.openedself == true) then
+                    for i, class in pairs(EventHandler.classField) do
+                        if (class.OnSelfOpen ~= nil) then
+                            class.OnSelfOpen(player, index)
+                        end
+                    end
+                end
+                glob.AlphaMod.playerSelfOpen[index] = player.openedself
+            end
+        end
+
     end,
 }
 
