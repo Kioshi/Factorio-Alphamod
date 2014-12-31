@@ -1,10 +1,10 @@
 {
     "name": "AlphaMod",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "title": "AlphaMod",
     "author": "Kexik",
     "contact": "http://www.factorioforums.com/forum/memberlist.php?mode=viewprofile&u=4733",
     "homepage": "https://github.com/Kioshi/Factorio-Alphamod",
-    "description": "Mod improving working with liquids",
+    "description": "Mod improving working with liquids and adding some other helpfull stuff for player",
     "dependencies": [ "base >= 0.11.5" ]
 }
