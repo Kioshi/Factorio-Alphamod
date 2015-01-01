@@ -6,21 +6,25 @@ EventHandler.Register(Drone)
 
 Drone.droneActive  = "        Drone is active        "
 Drone.droneInActive = "      Drone is inactive      "
-Drone.MAX_TECHNOLOGIES = 5
+Drone.MAX_TECHNOLOGIES = 6
 
 Drone.ZoomTechnology = {}
-Drone.ZoomTechnology[1] = 0.7
-Drone.ZoomTechnology[2] = 0.6
-Drone.ZoomTechnology[3] = 0.5
-Drone.ZoomTechnology[4] = 0.4
-Drone.ZoomTechnology[5] = 0.3
+Drone.ZoomTechnology[0] = 0.95
+Drone.ZoomTechnology[1] = 0.9
+Drone.ZoomTechnology[2] = 0.8
+Drone.ZoomTechnology[3] = 0.7
+Drone.ZoomTechnology[4] = 0.6
+Drone.ZoomTechnology[5] = 0.5
+Drone.ZoomTechnology[6] = 0.4
 
 Drone.DistanceTechnology = {}
-Drone.DistanceTechnology[1] = 300
-Drone.DistanceTechnology[2] = 400
-Drone.DistanceTechnology[3] = 500
-Drone.DistanceTechnology[4] = 600
-Drone.DistanceTechnology[5] = 700
+Drone.DistanceTechnology[0] = 150
+Drone.DistanceTechnology[1] = 200
+Drone.DistanceTechnology[2] = 300
+Drone.DistanceTechnology[3] = 400
+Drone.DistanceTechnology[4] = 500
+Drone.DistanceTechnology[5] = 600
+Drone.DistanceTechnology[6] = 700
 
 function Drone.OnSelfClose(player, index)
     if (player.gui.top.AmDroneGUI == nil) or (player.gui.top.AmDroneGUI.AmDroneGUIButton == nil) or (player.gui.top.AmDroneGUI.AmDroneGUIButton.caption == Drone.droneActive)  then
@@ -31,7 +35,7 @@ function Drone.OnSelfClose(player, index)
 end
 
 function Drone.OnSelfOpen(player, index)
-    if (player.gui.top.AmDroneGUI ~= nil) then
+    if (player.gui.top.AmDroneGUI ~= nil) or (player.force.technologies["drone"] == nil) or (player.force.technologies["drone"].researched == false) then
         return
     end
     
@@ -143,11 +147,11 @@ function Drone.SetMaxDistanceAndZoom(playerIndex)
     end
     
     if (array["droneDistance"] == nil) then
-        array["droneDistance"] = Drone.DistanceTechnology[1]
+        array["droneDistance"] = Drone.DistanceTechnology[0]
     end
     
     if (array["droneZoom"] == nil) then
-        array["droneZoom"] = Drone.ZoomTechnology[1]
+        array["droneZoom"] = Drone.ZoomTechnology[0]
     end
 
     return array

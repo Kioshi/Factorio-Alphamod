@@ -25,3 +25,5 @@ require("liquid-splitter.recipe")
 require("liquid-splitter.item")
 
 require("technology.fluid-handling")
+
+require("technology.drone")
