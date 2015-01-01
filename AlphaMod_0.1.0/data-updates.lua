@@ -144,7 +144,7 @@ function FixedPipeConnections(type)
 end
 
 for k,prototype in pairs(data.raw["pipe"]) do
-    if (prototype.name ~= "pipe") then
+    if (prototype.name ~= "pipe") and (prototype.minable ~= nil) and (prototype.fluid_box ~= nil) and (prototype.pictures ~= nil) then
         data:extend
         ({
             FixedPipeBasePrototype(prototype, "-t"),
