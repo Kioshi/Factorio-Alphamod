@@ -5,7 +5,7 @@ My mod for Factorio, where i am learning how to create mods
                
 **Factorio forum topic:** http://www.factorioforums.com/forum/viewtopic.php?f=14&t=7260
 
-**Version:** 0.1.1 - Advanced Fluid Handling
+**Version:** 0.1.2 - Advanced Fluid Handling
 
 **Compatible with:** 0.11.8 (mod is under development on newest experimental builds, started on 0.11.4)
 
@@ -25,6 +25,7 @@ My mod for Factorio, where i am learning how to create mods
 * Added generating fixed pipes (I,L,T), from other mod pipe prototypes 
 * Balanced recipes with requirement of Advanced Fluid Handling technology
 * Added Trash Bin for player when open his gui (E)
+* Added Drone that allow player explore surroundings
 
 **New entities:**
 
