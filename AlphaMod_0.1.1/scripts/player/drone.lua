@@ -20,11 +20,11 @@ Drone.ZoomTechnology[6] = 0.4
 Drone.DistanceTechnology = {}
 Drone.DistanceTechnology[0] = 150
 Drone.DistanceTechnology[1] = 200
-Drone.DistanceTechnology[2] = 300
-Drone.DistanceTechnology[3] = 400
-Drone.DistanceTechnology[4] = 500
-Drone.DistanceTechnology[5] = 600
-Drone.DistanceTechnology[6] = 700
+Drone.DistanceTechnology[2] = 250
+Drone.DistanceTechnology[3] = 300
+Drone.DistanceTechnology[4] = 350
+Drone.DistanceTechnology[5] = 400
+Drone.DistanceTechnology[6] = 450
 
 function Drone.OnSelfClose(player, index)
     if (player.gui.top.AmDroneGUI == nil) or (player.gui.top.AmDroneGUI.AmDroneGUIButton == nil) or (player.gui.top.AmDroneGUI.AmDroneGUIButton.caption == Drone.droneActive)  then
@@ -74,14 +74,19 @@ function Drone.OnTickUnFiltered()
         if (array["character"]) and (game.players[index].selected ~= array["playerSelection"]) then
             if (array["playerSelection"] ~= nil) then
                 array["playerSelection"].operable = array["playerSelectionOperable"]
-                array["playerSelectionOperable"] = nil
+                array["playerSelection"].minable = array["playerSelectionMinable"]
+                array["playerSelection"].rotatable = array["playerSelectionRotatable"]
                 array["playerSelection"] = nil
             end
             
             if (game.players[index].selected ~= nil) then
                 array["playerSelection"] = game.players[index].selected
                 array["playerSelectionOperable"] = game.players[index].selected.operable
+                array["playerSelectionMinable"] = game.players[index].selected.minable
+                array["playerSelectionRotatable"] = game.players[index].selected.rotatable
                 game.players[index].selected.operable = false
+                game.players[index].selected.minable = false
+                game.players[index].selected.rotatable = false
             end
         end
     end
@@ -100,7 +105,7 @@ function Drone.OnTick()
                 if (game.players[index].gui.top.AmDroneGUI) then
                     game.players[index].gui.top.AmDroneGUI.destroy()
                 end
-                game.players[index].print("Drone connection lost")
+                game.players[index].print(game.localise("drone-connection-lost"))
             end
             if (game.players[index].gui.top.AmDroneGUI) and (game.players[index].gui.top.AmDroneGUI.AmDroneGUIProgressbar) then
                 game.players[index].gui.top.AmDroneGUI.AmDroneGUIProgressbar.value = distance/array["droneDistance"]
@@ -113,9 +118,16 @@ function Drone.SetInactive(playerIndex)
     if (glob.AlphaMod == nil) or (glob.AlphaMod.playersDrones == nil) or (glob.AlphaMod.playersDrones[playerIndex] == nil) or (glob.AlphaMod.playersDrones[playerIndex]["character"] == nil) then
         return
     end
-    game.players[playerIndex].character = glob.AlphaMod.playersDrones[playerIndex]["character"]
-    game.players[playerIndex].force.manualminingspeedmodifier = glob.AlphaMod.playersDrones[playerIndex]["charMiningspeed"]
-    game.players[playerIndex].zoom = glob.AlphaMod.playersDrones[playerIndex]["charZoom"]
+    local array = glob.AlphaMod.playersDrones[playerIndex]
+    game.players[playerIndex].character = array["character"]
+    game.players[playerIndex].zoom = array["charZoom"]
+    
+    if (array["playerSelection"] ~= nil) then
+        array["playerSelection"].operable = array["playerSelectionOperable"]
+        array["playerSelection"].minable = array["playerSelectionMinable"]
+        array["playerSelection"].rotatable = array["playerSelectionRotatable"]
+        array["playerSelection"] = nil
+    end
 
     glob.AlphaMod.playersDrones[playerIndex]["character"] = nil
 end
@@ -124,11 +136,9 @@ function Drone.SetActive(playerIndex)
     CreateGlobalTable("playersDrones")
     local array = Drone.SetMaxDistanceAndZoom(playerIndex)
     array["character"] = game.players[playerIndex].character
-    array["charMiningspeed"] = game.players[playerIndex].force.manualminingspeedmodifier
     array["charZoom"] = game.players[playerIndex].zoom
     glob.AlphaMod.playersDrones[playerIndex] = array
     game.players[playerIndex].character = nil
-    game.players[playerIndex].force.manualminingspeedmodifier = -1
     game.players[playerIndex].zoom = array["droneZoom"]
 end
 

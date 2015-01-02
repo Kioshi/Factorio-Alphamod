@@ -16,4 +16,4 @@ require("scripts.boiler.electric-boiler")
 require("scripts.liquid-splitter.liquid-splitter") 
 --player
 require("scripts.player.trash-bin")
---require("scripts.player.drone")
+require("scripts.player.drone")
