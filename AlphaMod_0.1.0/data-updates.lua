@@ -52,8 +52,9 @@ function FixedPipeBasePrototype(prototype, type)
         fluid_box = 
         {
             base_area = prototype.fluid_box.base_area,
-            pipe_covers = pipecoverspictures(),
-            pipe_connections = FixedPipeConnections(type)
+            base_level = prototype.fluid_box.base_level,
+            pipe_covers = prototype.fluid_box.pipe_covers,
+            pipe_connections = FixedPipeConnections(prototype, type)
         },
         working_sound = prototype.working_sound,
         underground_sprite =
@@ -120,31 +121,60 @@ function FixedPipePictures(prototype, type)
     end
 end
 
-function FixedPipeConnections(type)
+function FixedPipeConnections(prototype, type)
+    local posZN = {}
+    local posZP = {}
+    local posPZ = {}
+    posZN["pos"] = nil
+    posZP["pos"] = nil
+    posPZ["pos"] = nil
+
+    for index, pos in pairs(prototype.fluid_box.pipe_connections) do
+        posZN["bl"] = pos["base_level"]
+        posZN["type"] = pos["type"]
+        posZP["bl"] = pos["base_level"]
+        posZP["type"] = pos["type"]
+        posPZ["bl"] = pos["base_level"]
+        posPZ["type"] = pos["type"]
+        if (pos["position"][1] == 0) then
+            if (pos["position"][2] > 0) then
+                posZP["pos"] = { pos["position"][1], pos["position"][2] }
+            elseif (pos["position"][2] < 0) then
+                posZN["pos"] = { pos["position"][1], pos["position"][2] }
+            end
+        elseif (pos["position"][1] > 0) and (pos["position"][2] == 0) then
+            posPZ["pos"] = { pos["position"][1], pos["position"][2] }
+        end
+    end
+
+    if (posPZ["pos"] == nil) or (posZN["pos"] == nil) or (posZP["pos"] == nil) then
+        return nil
+    end
+
     if (type == "-t") then
         return
         {
-            { position = {0, -1} },
-            { position = {0, 1} },
-            { position = {1, 0} },
+            { position = posZN["pos"], base_level = posZN["bl"], type=posZN["type"] },
+            { position = posZP["pos"], base_level = posZP["bl"], type=posZP["type"] },
+            { position = posPZ["pos"], base_level = posPZ["bl"], type=posPZ["type"] },
         }
     elseif (type == "-l") then
         return
         {
-            { position = {1, 0} },
-            { position = {0, 1} },
+            { position = posPZ["pos"], base_level = posPZ["bl"], type=posPZ["type"] },
+            { position = posZP["pos"], base_level = posZP["bl"], type=posZP["type"] },
         }
     elseif (type == "-i") then  
         return
         {
-            { position = {0, 1} },
-            { position = {0, -1} },
+            { position = posZP["pos"], base_level = posZP["bl"], type=posZP["type"] },
+            { position = posZN["pos"], base_level = posZN["bl"], type=posZN["type"] },
         }
     end
 end
 
 for k,prototype in pairs(data.raw["pipe"]) do
-    if (prototype.name ~= "pipe") and (prototype.minable ~= nil) and (prototype.fluid_box ~= nil) and (prototype.pictures ~= nil) then
+    if (prototype.name ~= "pipe") and (prototype.minable ~= nil) and (prototype.fluid_box ~= nil) and (prototype.pictures ~= nil) and (FixedPipeConnections(prototype, "-t") ~= nil) then
         data:extend
         ({
             FixedPipeBasePrototype(prototype, "-t"),
