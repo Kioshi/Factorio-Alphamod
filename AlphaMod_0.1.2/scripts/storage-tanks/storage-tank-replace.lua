@@ -8,7 +8,7 @@ function StorageTankReplace.OnPutOnPos(event)
 		if (player ~= nil) and (player.selected ~= nil) and (player.cursorstack ~= nil) then
 			if (fncIN(player.cursorstack.name,"storage-tank","output-storage-tank","smart-storage-tank")) and (player.selected.type == "storage-tank") then
                 local liquid = player.selected.fluidbox[1]
-                local newEntity = game.createentity{name = player.cursorstack.name, position = player.selected.position, direction = player.selected.direction}
+                local newEntity = game.createentity{name = player.cursorstack.name, position = player.selected.position, direction = player.selected.direction, force=player.force}
                 if (newEntity.name == "smart-storage-tank") then
                     SmartStorageTank.CreateChest(newEntity)
                 end

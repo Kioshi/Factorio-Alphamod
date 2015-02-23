@@ -44,12 +44,12 @@ function LiquidSplitter.CreateEntity(entity, data)
     local splitter = entity
     array = {}
     array["splitter"]    = splitter
-    array["inPump"]      = game.createentity{name="splitter-in-pump", position = LiquidSplitter.DirectionPositionShift(splitter.position,0,-1,splitter.direction), direction = splitter.direction}
-    array["outPumpLeft"] = game.createentity{name="splitter-out-pump",position = LiquidSplitter.DirectionPositionShift(splitter.position,-1,1,splitter.direction), direction = splitter.direction}
-    array["outPumpRight"]= game.createentity{name="splitter-out-pump",position = LiquidSplitter.DirectionPositionShift(splitter.position, 1,1,splitter.direction), direction = splitter.direction}
-    array["leftPipeL"]   = game.createentity{name="pipe-l-splitter",position = LiquidSplitter.DirectionPositionShift(splitter.position,-1,0,splitter.direction), direction = LiquidSplitter.FixDirection(true,splitter.direction)}
-    array["rightPipeL"]  = game.createentity{name="pipe-l-splitter",position = LiquidSplitter.DirectionPositionShift(splitter.position,1,0,splitter.direction),  direction = LiquidSplitter.FixDirection(false,splitter.direction)}
-    array["pipeT"]       = game.createentity{name="pipe-t-splitter",position = LiquidSplitter.DirectionPositionShift(splitter.position,0,0,splitter.direction),  direction = (splitter.direction + 2) % 8}
+    array["inPump"]      = game.createentity{name="splitter-in-pump", position = LiquidSplitter.DirectionPositionShift(splitter.position,0,-1,splitter.direction), direction = splitter.direction, force=data["force"] }
+    array["outPumpLeft"] = game.createentity{name="splitter-out-pump",position = LiquidSplitter.DirectionPositionShift(splitter.position,-1,1,splitter.direction), direction = splitter.direction, force=data["force"] }
+    array["outPumpRight"]= game.createentity{name="splitter-out-pump",position = LiquidSplitter.DirectionPositionShift(splitter.position, 1,1,splitter.direction), direction = splitter.direction, force=data["force"] }
+    array["leftPipeL"]   = game.createentity{name="pipe-l-splitter",position = LiquidSplitter.DirectionPositionShift(splitter.position,-1,0,splitter.direction), direction = LiquidSplitter.FixDirection(true,splitter.direction), force=data["force"] }
+    array["rightPipeL"]  = game.createentity{name="pipe-l-splitter",position = LiquidSplitter.DirectionPositionShift(splitter.position,1,0,splitter.direction),  direction = LiquidSplitter.FixDirection(false,splitter.direction), force=data["force"] }
+    array["pipeT"]       = game.createentity{name="pipe-t-splitter",position = LiquidSplitter.DirectionPositionShift(splitter.position,0,0,splitter.direction),  direction = (splitter.direction + 2) % 8, force=data["force"] }
     array["leftValue"]   = data["leftValue"]
     array["rightValue"]  = data["rightValue"]
     array["stopWhenClogged"] = data["stopWhenClogged"]
@@ -59,7 +59,7 @@ end
 
 function LiquidSplitter.OnEntityBuild(event)
     if (event ~= nil) and (event.createdentity ~= nil) and (event.createdentity.name == "liquid-splitter-inserter") then
-        LiquidSplitter.CreateEntity(event.createdentity, { leftValue = 1, rightValue = 1, stopWhenClogged = false})
+        LiquidSplitter.CreateEntity(event.createdentity, { leftValue = 1, rightValue = 1, stopWhenClogged = false, force = game.forces.player })
     end
 end
 
@@ -83,6 +83,7 @@ function LiquidSplitter.RemoveEntity(entity)
             data["leftValue"] = array["leftValue"]
             data["rightValue"] = array["rightValue"]
             data["stopWhenClogged"] = array["stopWhenClogged"]
+            data["force"] = array["splitter"].force
             array["inPump"].destroy()
             array["outPumpLeft"].destroy()
             array["outPumpRight"].destroy()
@@ -108,7 +109,7 @@ function LiquidSplitter.OnEntityDied(event)
 end
 
 function LiquidSplitter.OnEntityRotated(event)
-    if (event ~= nil) and (event.entity ~= nil) and (event.entity.name == "liquid-splitter-inserter") then
+    if (event ~= nil) and (event.entity ~= nil) and (event.entity.name == "liquid-splitter-inserter") then   
         local data = LiquidSplitter.RemoveEntity(event.entity)
         LiquidSplitter.CreateEntity(event.entity,data)
     end

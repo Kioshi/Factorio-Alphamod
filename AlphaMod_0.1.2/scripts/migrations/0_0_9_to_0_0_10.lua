@@ -12,8 +12,9 @@ function Migration_0_0_9_to_0_0_10.MigrateGlobalTableEntities()
         if (entity.name == "electric-boiler") then
             local pos = entity.position
             local dir = entity.direction
+            local oldForce = entity.force
             entity.destroy()
-            glob.AlphaMod.electricBoilers[index] = game.createentity{ name = "electric-boiler-pump", position = pos, direction = dir }
+            glob.AlphaMod.electricBoilers[index] = game.createentity{ name = "electric-boiler-pump", position = pos, direction = dir, force=oldForce }
             count = count + 1
         end
     end

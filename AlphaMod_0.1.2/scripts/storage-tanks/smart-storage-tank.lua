@@ -32,7 +32,7 @@ function SmartStorageTank.RemoveFromGlobalTable(index)
 end
 
 function SmartStorageTank.CreateChest(tank)
-	local chest = game.createentity{name = "smart-storage-tank-chest", position = tank.position, direction = tank.direction}
+	local chest = game.createentity{name = "smart-storage-tank-chest", position = tank.position, direction = tank.direction, force=game.forces.player}
 
     chest.minable = false
 	chest.destructible = false

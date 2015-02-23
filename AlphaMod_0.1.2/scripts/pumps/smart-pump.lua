@@ -9,7 +9,7 @@ function SmartPump.RemoveFromGlobalTable(index)
 end
 
 function SmartPump.CreatePump(inserter)
-	local pump = game.createentity{name = "smart-pump", position = inserter.position, direction = inserter.direction}
+	local pump = game.createentity{name = "smart-pump", position = inserter.position, direction = inserter.direction, force=game.forces.player}
 
     pump.minable = false
 	pump.destructible = false

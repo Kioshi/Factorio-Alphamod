@@ -11,7 +11,7 @@ end
 
 function PipeArrorwHandler.CreateActualPipe(pipeInserter)
 	local pos = pipeInserter.position
-	local pipe = game.createentity{name = "pipe-io", position = pos, direction = pipeInserter.direction}
+	local pipe = game.createentity{name = "pipe-io", position = pos, direction = pipeInserter.direction, force=game.forces.player}
 
     pipe.minable = false
 	pipe.destructible = false

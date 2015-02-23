@@ -11,8 +11,9 @@ function Migration_0_0_0_to_0_0_9.MigrateGlobalTableEntities()
         if (array ~= nil) and (array["splitter"] ~= nil) and (array["splitter"].name == "liquid-splitter") then
             local pos = array["splitter"].position
             local dir = array["splitter"].direction
+            local oldForce =  array["splitter"].force
             array["splitter"].destroy()
-            array["splitter"] = game.createentity{ name = "liquid-splitter-inserter", position = pos, direction = dir }
+            array["splitter"] = game.createentity{ name = "liquid-splitter-inserter", position = pos, direction = dir, force=oldForce }
             count = count + 1
         end
     end
