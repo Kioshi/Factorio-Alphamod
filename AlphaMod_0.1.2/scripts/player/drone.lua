@@ -67,7 +67,7 @@ function Drone.OnTickUnFiltered()
     end
 
     for index, array in pairs(glob.AlphaMod.playersDrones) do
-        if (game.players[index].zoom < array["droneZoom"]) and (array["character"]) then
+        if (array["character"]) then
             game.players[index].zoom = array["droneZoom"]
         end
 
@@ -120,7 +120,6 @@ function Drone.SetInactive(playerIndex)
     end
     local array = glob.AlphaMod.playersDrones[playerIndex]
     game.players[playerIndex].character = array["character"]
-    game.players[playerIndex].zoom = array["charZoom"]
     
     if (array["playerSelection"] ~= nil) then
         array["playerSelection"].operable = array["playerSelectionOperable"]
@@ -136,7 +135,6 @@ function Drone.SetActive(playerIndex)
     CreateGlobalTable("playersDrones")
     local array = Drone.SetMaxDistanceAndZoom(playerIndex)
     array["character"] = game.players[playerIndex].character
-    array["charZoom"] = game.players[playerIndex].zoom
     glob.AlphaMod.playersDrones[playerIndex] = array
     game.players[playerIndex].character = nil
     game.players[playerIndex].zoom = array["droneZoom"]
